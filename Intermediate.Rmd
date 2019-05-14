@@ -5,6 +5,169 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+#conditionals and control flow
+3==(2+1)
+"Intermediate" != "r"
+TRUE != FALSE
+(1+2)>4
+linkedin<-c(16,9,13,NA,2,17,14)
+facebook<-c(17,7,5,16,8,13,14)
+linkedin>15
+linkedin<=5
+linkedin>facebook
+views<-matrix(c(linkedin, facebook), byrow = TRUE, nrow=2)
+colnames(views)<-c("Day 1","Day 2","Day 3","Day 4","Day 5","Day 6","Day 7")
+rownames(views)<-c("LinkedIn","Facebook")
+views
+views==13
+views<=14
+last<-tail(linkedin,1)
+last
+5>last|last>10
+15<last&last<=20
+linkedin>10&facebook<10
+linkedin>=12|facebook>=12
+views>11 & views<=14
+medium<-"Linkedin"
+num_views<-14
 
+if(medium=="LinkedIn"){
+  print("Showing LinkeIn information")
+} else{
+  print("Unknown medium")
+}
+#Loops
+speed<-100
+while(speed>30){
+  print("Disminuya la velocidad")
+  speed<-speed-7
+}
+speed
+
+speed<-100
+while(speed>30){
+  print(paste("Your speed is ", speed))
+  if(speed>80){
+    break
+  }
+  if(speed>48){
+    print("Slow down big time")
+    speed<-speed-11
+  }
+  else{
+    print("Slow down")
+    speed<-speed-6
+  }
+}
+speed
+
+primes<-c(2,3,5,7,11,13)
+
+for(p in primes){
+  print(p)
+}
+for(v in linkedin){
+  print(v)
+}
+primes_list<-list(2,3,5,7,11,13)
+
+nyc<-list(pop=8405837, boroughs=c("Manhattan", "Bronx", "Queens"), capital=FALSE)
+
+for(i in nyc){
+  print(i)
+}
+
+d1<-c("O", "NA", "X")
+d2<-c("NA", "O", "O")
+d3<-c("X", "NA", "X")
+
+ttt_matrix<-matrix(c(d1,d2,d3),byrow=TRUE, nrow=3)
+ttt_matrix
+
+for(p in 1:nrow(ttt_matrix)){
+  for(q in 1:nrow(ttt_matrix)){
+    print(paste("En la fila ", p, " y la columna ", q, "el tablero contiene", ttt_matrix[p,q]))
+  }
+}
+#Functions
+mean(linkedin, na.rm = TRUE)
+mean(facebook)
+pow_two<-function(arg1){
+  arg1^2
+}
+pow_two(2)
+
+throw_die <- function() {
+  number <- sample(1:6, size = 1)
+  number
+}
+
+throw_die()
+
+#Packages
+install.packages("ggplot2")
+library("ggplot2")
+qplot(mtcars$wt, mtcars$hp)
+search()
+
+pioneers <- c("GAUSS:1777", "BAYES:1702", "PASCAL:1623", "PEARSON:1857")
+split_math <- strsplit(pioneers, split = ":")
+split_math
+
+split_low <- lapply(split_math, tolower)
+split_low
+
+lapply(list(1,2,3), function(x) { 3 * x })
+t1 <- c( 3,  7,  9,  6, -1)
+t2 <- c( 6,  9, 12, 13,  5)
+t3 <- c(4,  8,  3, -1, -3)
+t4 <- c(1,  4,  7,  2, -2)
+t5 <- c(5, 7, 9, 4, 2)
+t6 <- c(-3,  5,  8,  9,  4)
+t7 <- c(3, 6, 9, 4, 1)
+temp <- list(t1, t2, t3, t4, t5, t6, t7)
+temp
+lapply(temp, min)
+sapply(temp, min)
+
+basics <- function(x) {
+  c(min = min(x), mean = mean(x), max = max(x))
+}
+vapply(temp, basics, numeric(3))
+
+#utilities
+#abs valor absoluto
+#sum suma todos los valores
+#men media aritmetica
+#round redondea los valores a 0 decimales
+#unlist convierte en vector una lista
+#append hace un mismo vector 2 vectores
+seq1 <- seq(1, 500, by = 3)
+seq1
+seq2 <- seq(1200, 900, by = -7)
+seq2
+
+emails <- c("john.doe@ivyleague.edu", "education@world.gov", "dalai.lama@peace.org",
+            "invalid.edu", "quant@bigdatacollege.edu", "cookie.monster@sesame.tv")
+grepl("edu", emails)
+
+hits <- grep("edu", emails)
+hits
+
+emails[hits]
+
+today <- Sys.Date()
+today
+
+now <- Sys.time()
+now
+
+as.Date("1982-01-13")
+as.Date("Jan-13-82", format = "%b-%d-%y")
+as.Date("13 January, 1982", format = "%d %B, %Y")
+
+today <- Sys.Date()
+format(Sys.Date(), format = "%d %B, %Y")
+format(Sys.Date(), format = "Today is a %A!")
 ```
 
